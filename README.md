@@ -1,3 +1,7 @@
+<p align="center">
+    <img height="200px" width="200px" alt="shortify: url shortner on nest js" src="https://i.ibb.co/n6tv94c/download.png">
+</p>
+
 # Shortify
 Streamline URL shortening on the scalable NestJS framework.
 
