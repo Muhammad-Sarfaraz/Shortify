@@ -28,9 +28,26 @@ export class UrlShortnerService {
     }
   }
 
-  async create(Url: CreateURLDto): Promise<Url> {
-    const createdUrl = this.urlRepository.create(Url);
+ 
+  async create(data: CreateURLDto): Promise<Url> {
+    const shortUrl = await this.generateShortUrl(); // Generate short URL
+    const createdUrl = this.urlRepository.create({
+      long_url: data.long_url,
+      short_url: shortUrl,
+    });
     return await this.urlRepository.save(createdUrl);
+  }
+
+  generateShortUrl() {
+    const characters =
+      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let randomCode = '';
+    for (let i = 0; i < 6; i++) {
+      randomCode += characters.charAt(
+        Math.floor(Math.random() * characters.length),
+      );
+    }
+    return randomCode;
   }
 
   async update(id: number, Url: UpdateUrlDto): Promise<Url> {

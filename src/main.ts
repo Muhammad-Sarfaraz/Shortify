@@ -14,6 +14,9 @@ async function bootstrap() {
   // Global Validation
   app.useGlobalPipes(new ValidationPipe({ disableErrorMessages: false }));
 
+  // Set Global Prefix
+  app.setGlobalPrefix('api');
+
   // OpenAPI Specification
   const config = new DocumentBuilder()
     .setTitle('Shortify')
