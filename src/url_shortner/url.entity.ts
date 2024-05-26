@@ -6,12 +6,13 @@ export class Url {
   id: number;
 
   @Column({
+    type: 'string',
     nullable: false,
   })
   long_url: string;
 
   @Column({
-    type: 'float',
+    type: 'string',
     nullable: false,
   })
   short_url: string;
