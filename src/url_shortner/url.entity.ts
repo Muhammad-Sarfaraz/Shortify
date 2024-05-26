@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { BeforeInsert, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity({ name: 'url' })
 export class Url {
@@ -6,13 +6,13 @@ export class Url {
   id: number;
 
   @Column({
-    type: 'string',
+    type: 'text',
     nullable: false,
   })
   long_url: string;
 
   @Column({
-    type: 'string',
+    type: 'varchar',
     nullable: false,
   })
   short_url: string;
