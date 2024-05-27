@@ -14,21 +14,20 @@ export class UrlShortnerService {
     return await this.urlRepository.find();
   }
 
-  async getOneById(id: number): Promise<Url> {
+  async getOneByShortUrl(short_url: string): Promise<Url> {
     try {
       return await this.urlRepository.findOneOrFail({
-        where: { id: id },
+        where: { short_url: short_url },
       });
     } catch (err) {
-      console.log('Get one Url by id error: ', err.message ?? err);
+      console.log('Get one Url by short_url error: ', err.message ?? err);
       throw new HttpException(
-        `Url with id ${id} not found.`,
+        `Url with  ${short_url} not found.`,
         HttpStatus.NOT_FOUND,
       );
     }
   }
-
- 
+  
   async create(data: CreateURLDto): Promise<Url> {
     const shortUrl = await this.generateShortUrl(); // Generate short URL
     const createdUrl = this.urlRepository.create({

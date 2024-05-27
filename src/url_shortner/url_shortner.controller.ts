@@ -23,9 +23,9 @@ export class UrlShortnerController {
     return this.UrlShortnerService.getAll();
   }
 
-  @Get(':id')
-  async GetOne(@Param('id', ParseIntPipe) id: number): Promise<Url> {
-    return this.UrlShortnerService.getOneById(id);
+  @Get(':short_url')
+  async GetOne(@Param('short_url') short_url: string): Promise<Url> {
+    return this.UrlShortnerService.getOneByShortUrl(short_url);
   }
 
   @Post()
